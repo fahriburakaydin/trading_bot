@@ -1,0 +1,13 @@
+trading:
+  asset:
+    symbol: "ETH"
+    currency: "USD"
+    exchange: "PAXOS"
+    type: "CRYPTO"
+    min_quantity: 0.001
+    price_precision: 2
+    quantity_precision: 3
+
+indicators:
+  atr_period: 14
+  volume_profile_sessions: 20

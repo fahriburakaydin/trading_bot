@@ -1,0 +1,44 @@
+trading:
+  asset:
+    symbol: "EURUSD"
+    currency: "USD"
+    exchange: "IDEALPRO"
+    type: "FOREX"
+    min_quantity: 20000        # IBKR forex min lot: 20,000 base currency units
+    price_precision: 5         # EUR/USD quoted to 5 decimal places (e.g. 1.10523)
+    quantity_precision: 0      # forex lots are whole numbers
+
+  capital:
+    paper_account_size: 100000
+    risk_per_trade_pct: 0.005       # 0.5% per trade
+    max_concurrent_positions: 2     # fewer concurrent FX positions
+    max_daily_loss_pct: 0.03
+    max_notional_pct: 0.40          # FX notional is large; allow up to 40%
+
+  hours:
+    days: [Sun, Mon, Tue, Wed, Thu, Fri]
+    start_hour: 0
+    end_hour: 22                    # avoid low-liquidity window 22:00–00:00 UTC
+    timezone: "UTC"
+
+  price_monitor:
+    poll_interval_seconds: 30
+    alarm_expiry_hours: 48
+    trigger_tolerance_pct: 0.0005   # 0.05% — FX moves in tight pips
+    queue_max_size: 10
+
+  orders:
+    type: "limit"
+    max_slippage_pct: 0.001         # 0.1% — FX is very liquid, slippage is tiny
+    sl_type: "stop_limit"
+    sl_limit_offset_pct: 0.0002
+    trail_stop: false
+
+risk:
+  min_confidence: 0.55              # forex S/R scores lower than crypto — volume data unavailable
+  min_risk_reward: 1.5
+
+indicators:
+  atr_period: 14
+  ema_periods: [20, 50, 200]
+  volume_profile_sessions: 20       # less meaningful for FX but kept for consistency
