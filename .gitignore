@@ -26,6 +26,10 @@ build/
 logs/
 *.log
 
+# Claude Code
+CLAUDE.md
+.claude/
+
 # IDE
 .vscode/
 .idea/
